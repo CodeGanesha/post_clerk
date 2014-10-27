@@ -31,24 +31,17 @@ Add a config/locale/config.yml with the data for the calculator (s)
 With the default settings (measurements in kg and cm):
 
 - Max weight of one item: 18
-- Max width of one item: 60
-- Max length of one item: 90
 - Default weight: 1kg (applies when product weight is 0)
-- Handling fee: 10
+- Handling fee: 0
 - Amount, over which handling fee won't be applied: 50
 - Max total of the order: 120.0
 - Weights (space separated): 1 2 5 10 20
-- Prices (space separated):  6 9 12 15 18
+- Prices (space separated):  2 5 10 15 18
 
-## Applies?
 
-The Shipping method does not apply to the order if:
+The Shipping method does not apply to the order if any items weighs more than 18 kg.
 
-- Any items weighs more than 18 kg.
-- Any item is longer than 90 cm.
-- Any items second longest side (width) is over 60 cm. Eg a 70x70x20 item.
-
-## Costs
+## Cost examples
 
 - Items weighing 10 kg of worth 100 Euros will cost 15 Euros.
 - Items weighing 10 kg of worth 40 Euros will cost 25 Euros (15 + 10 handling).
@@ -60,18 +53,11 @@ The Shipping method does not apply to the order if:
 
 ---
 
-## Contributing
-
-See corresponding [contributing guidelines][1].
-
----
 
 ## License
 
-Copyright (c) 2011-2014 [Torsten Rüger][2], [Tobias Bohwalli][3] and other [contributors][4], released under the [New BSD License][5].
+Copyright (c) 2011-2014 [Torsten Rüger][1], [Tobias Bohwalli][2] , released under the [MIT License][3].
 
-[1]: https://github.com/futhr/post_clerk/blob/master/CONTRIBUTING.md
-[2]: https://github.com/dancinglightning
-[3]: https://github.com/futhr
-[4]: https://github.com/futhr/post_clerk/graphs/contributors
-[5]: https://github.com/futhr/post_clerk/blob/master/LICENSE.md
+[1]: https://github.com/dancinglightning
+[2]: https://github.com/futhr
+[3]: https://github.com/ruby_clerks/post_clerk/blob/master/LICENSE

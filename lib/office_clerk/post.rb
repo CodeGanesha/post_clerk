@@ -2,11 +2,11 @@ module OfficeClerk
   class Post < ShippingMethod
 
     DEFAULTS ={   :weight_table     => '1 2 5 10 20' , 
-                  :price_table      => '6 9 12 15 18' ,
+                  :price_table      => '2 5 10 15 18' ,
                   :max_item_weight  => "18" ,
                   :max_price        => "120" ,
-                  :handling_max     => "50" ,
-                  :handling_fee     => "10" ,
+                  :handling_max     => "20" ,
+                  :handling_fee     => "2" ,
                   :default_weight   => "1" }
                   
     def initialize data
