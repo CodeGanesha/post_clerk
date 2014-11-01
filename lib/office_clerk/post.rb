@@ -13,11 +13,15 @@ module OfficeClerk
       super DEFAULTS.merge(data)
       @prices = @data[:price_table].split.map(&:to_f)
       @weights = @data[:weight_table].split.map(&:to_f)
-      @max_item_weight = @data[:max_item_weight].to_f
-      @max_price = @data[:max_price].to_f
-      @handling_max = @data[:handling_max].to_f
-      @handling_fee = @data[:handling_fee].to_f
-      @default_weight = @data[:default_weight].to_f
+      @max_item_weight = @data[:max_item_weight].to_f || 18.0
+      @max_price = @data[:max_price].to_f || 120.0
+      @handling_max = @data[:handling_max].to_f || 20.0
+      @handling_fee = @data[:handling_fee].to_f || 2.0
+      @default_weight = @data[:default_weight].to_f || 1.0
+      raise "Could not parse weights #{@data[:weight_table]} for #{key}" if @weights.empty? 
+      raise "Could not parse weights #{@data[:weight_table]} for #{key}" if @weights.include?(nil) 
+      raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.empty?
+      raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.include?(nil)
     end
     attr_reader :prices , :weights , :max_item_weight , :max_price , :handling_fee , :handling_max , :default_weight
 
@@ -32,10 +36,10 @@ module OfficeClerk
     end
 
     def price_for(basket)
-      total_price = basket.items.map { |item| item.total }.reduce(:+)
+      total_price = basket.total_price
       return 0.0 if total_price > max_price
 
-      total_weight = basket.items.map {|item| item.quantity * (item.product.weight || default_weight) }.reduce(:+)
+      total_weight = basket.items.map {|item| item.quantity * (item.product.weight || default_weight) }.reduce(:+) || 0.0
       shipping =  0
 
       while total_weight > weights.last # In several packets if need be.
