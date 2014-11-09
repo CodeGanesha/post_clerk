@@ -5,7 +5,7 @@ $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.name         = 'post_clerk'
-  s.version      = "0.0.1"
+  s.version      = "0.4"
   s.summary      = 'Calculate weight based charges for a OfficeClerk basket'
   s.description  = s.summary
   s.required_ruby_version = '>= 1.9.3'
@@ -22,21 +22,6 @@ Gem::Specification.new do |s|
 
   s.has_rdoc = false
 
-  s.add_runtime_dependency 'office_clerk', '~> 0.0.1'
+  s.add_runtime_dependency 'office_clerk', '~> 0.1'
 
-  s.add_development_dependency 'rspec', '~> 3.1.0'
-  s.add_development_dependency 'rspec-rails', '~> 3.1.0'
-  s.add_development_dependency 'factory_girl', '>= 4.4'
-  s.add_development_dependency 'sqlite3', '~> 1.3.9'
-  s.add_development_dependency 'simplecov', '~> 0.9.0'
-  s.add_development_dependency 'coveralls', '>= 0.7.0'
-  s.add_development_dependency 'i18n-spec', '>= 0.5.1'
-  s.add_development_dependency 'ffaker', '>= 1.24'
-  s.add_development_dependency 'coffee-rails', '~> 4.0.0'
-  s.add_development_dependency 'sass-rails', '~> 4.0.0'
-  s.add_development_dependency 'pry-rails', '>= 0.3.2'
-  s.add_development_dependency 'database_cleaner', '1.3.0'
-  s.add_development_dependency 'guard-rspec', '>= 4.2.8'
-  s.add_development_dependency 'guard-rubocop', '>= 1.1.0'
-  s.add_development_dependency 'rubocop', '>= 0.24.1'
 end
