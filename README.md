@@ -5,7 +5,7 @@
 
 # Post Clerk
 
-A postal service is delivers based on weight only. Like most post services in Europe will.
+A postal service delivers based on weight only. Like most post services in Europe will.
 
 This extension adds a office_clerk/shipping_method model to do this.
 
