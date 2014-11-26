@@ -1,40 +1,38 @@
-require 'simplecov'
-require 'coveralls'
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
-]
-SimpleCov.start do
-  add_filter '/.bundle'
-  add_filter '/spec/'
-  add_filter '/lib/post_clerk/engine'
-  add_group 'Libraries', 'lib'
+if ENV['CODECLIMATE_REPO_TOKEN']
+  require "codeclimate-test-reporter"
+  CodeClimate::TestReporter.start
 end
 
-ENV['RAILS_ENV'] ||= 'test'
+# This file is copied to spec/ when you run 'rails generate rspec:install'
+ENV["RAILS_ENV"] = 'test'
+require File.expand_path("../../test_app/config/environment",  __FILE__)
+Rails.backtrace_cleaner.remove_silencers!
 
-require File.expand_path('../dummy/config/environment.rb',  __FILE__)
-
-require 'pry'
-require 'ffaker'
 require 'rspec/rails'
 
-ActiveRecord::Migration.maintain_test_schema!
-ActiveRecord::Migration.check_pending!
+Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
+
 
 RSpec.configure do |config|
+  
+  config.include PageHelper  
+  
+  config.include OfficeClerk::Engine.routes.url_helpers
 
-  config.fail_fast = false
-  config.filter_run focus: true
-  config.run_all_when_everything_filtered = true
-
-  config.mock_with :rspec
-  config.raise_errors_for_deprecations!
+  config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
+  
+  # Run specs in random order to surface order dependencies. If you find an
+  # order dependency and want to debug it, you can fix the order by providing
+  # the seed, which is printed after each run.
+  #     --seed 1234
+  config.order = "random"
 
-  config.expect_with :rspec do |expectations|
-    expectations.syntax = :expect
+  if config.files_to_run.one?
+    config.default_formatter = 'doc'
   end
-end
 
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |file| require file }
+  # Print the 10 slowest examples and example groups at the end of the spec run, 
+  #to help surface which specs are running  particularly slow.
+#  config.profile_examples = 10
+end
