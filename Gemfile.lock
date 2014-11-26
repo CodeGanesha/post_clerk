@@ -1,6 +1,11 @@
-GIT
-  remote: git://github.com/rubyclerks/office_clerk.git
-  revision: d30f9eb329b9520cb1f5c718ffbfc3e123c6c9f3
+PATH
+  remote: ../
+  specs:
+    post_clerk (0.4)
+      office_clerk (~> 0.1)
+
+PATH
+  remote: ../office_clerk
   specs:
     office_clerk (0.5)
       bcrypt-ruby (~> 3.1)
@@ -19,12 +24,6 @@ GIT
       sass-rails (~> 4.0)
       valid_email
       will_paginate-bootstrap (~> 1.0)
-
-PATH
-  remote: ../
-  specs:
-    post_clerk (0.4)
-      office_clerk (~> 0.1)
 
 GEM
   remote: https://rubygems.org/
@@ -229,12 +228,11 @@ GEM
       rspec-mocks (~> 3.1.0)
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
-    sass (3.2.19)
-    sass-rails (4.0.5)
+    sass (3.4.5)
+    sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
-      sass (~> 3.2.2)
-      sprockets (~> 2.8, < 3.0)
-      sprockets-rails (~> 2.0)
+      sass (>= 3.1.10)
+      sprockets-rails (~> 2.0.0)
     simplecov (0.9.1)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
@@ -246,10 +244,10 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.2.1)
+    sprockets-rails (2.0.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
-      sprockets (>= 2.8, < 4.0)
+      sprockets (~> 2.8)
     sqlite3 (1.3.10)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
