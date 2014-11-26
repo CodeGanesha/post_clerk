@@ -3,7 +3,7 @@ sudo: false
 cache: bundler
 script:
   - RAILS_ENV=test bundle exec rake db:migrate
-  - CODECLIMATE_REPO_TOKEN=d42df0d47d387f23796b689cd7d196f0c6b5f1ce70b907ffdd9138c55c900600 bundle exec rspec
+  - CODECLIMATE_REPO_TOKEN=adae8235c95c87b64fe29dce735c0d6340e8050ad504bade9b53cfcaab818c2b bundle exec rspec
 rvm:
   - 1.9.3
   - 2.0.0
