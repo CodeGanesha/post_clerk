@@ -11,17 +11,8 @@ module OfficeClerk
                   
     def initialize data
       super DEFAULTS.merge(data)
-      @prices = @data[:price_table].split.map(&:to_f)
-      @weights = @data[:weight_table].split.map(&:to_f)
-      @max_item_weight = @data[:max_item_weight].to_f || 18.0
-      @max_price = @data[:max_price].to_f || 120.0
-      @handling_max = @data[:handling_max].to_f || 20.0
-      @handling_fee = @data[:handling_fee].to_f || 2.0
-      @default_weight = @data[:default_weight].to_f || 1.0
-      raise "Could not parse weights #{@data[:weight_table]} for #{key}" if @weights.empty? 
-      raise "Could not parse weights #{@data[:weight_table]} for #{key}" if @weights.include?(nil) 
-      raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.empty?
-      raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.include?(nil)
+      set_members
+      check_values!
     end
     attr_reader :prices , :weights , :max_item_weight , :max_price , :handling_fee , :handling_max , :default_weight
 
@@ -63,6 +54,22 @@ module OfficeClerk
 
     def calc_handling_fee(total_price)
       handling_max < total_price ? 0 : handling_fee
+    end
+    private
+    def set_members
+      @prices = @data[:price_table].split.map(&:to_f)
+      @weights = @data[:weight_table].split.map(&:to_f)
+      @max_item_weight = @data[:max_item_weight].to_f || 18.0
+      @max_price = @data[:max_price].to_f || 120.0
+      @handling_max = @data[:handling_max].to_f || 20.0
+      @handling_fee = @data[:handling_fee].to_f || 2.0
+      @default_weight = @data[:default_weight].to_f || 1.0
+    end
+    def check_values!
+      raise "Could not parse weights #{@data[:weight_table]} for #{key}" if @weights.empty? 
+      raise "Could not parse weights #{@data[:weight_table]} for #{key}" if @weights.include?(nil) 
+      raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.empty?
+      raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.include?(nil)
     end
   end
 end
