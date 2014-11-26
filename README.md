@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/rubyclerks/post_clerk.svg?branch=master)](https://travis-ci.org/rubyclerks/post_clerk)
+[![Gem Version](https://badge.fury.io/rb/post_clerk.svg)](http://badge.fury.io/rb/post_clerk)
+[![Code Climate](https://codeclimate.com/github/rubyclerks/post_clerk/badges/gpa.svg)](https://codeclimate.com/github/rubyclerks/post_clerk)
+[![Test Coverage](https://codeclimate.com/github/rubyclerks/post_clerk/badges/coverage.svg)](https://codeclimate.com/github/rubyclerks/post_clerk)
+
 # Post Clerk
 
 A postal service is delivers based on weight only. Like most post services in Europe will.
