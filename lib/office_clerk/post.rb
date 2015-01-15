@@ -3,10 +3,10 @@ module OfficeClerk
 
     DEFAULTS ={   :weight_table     => '1 2 5 10 20' , 
                   :price_table      => '2 5 10 15 18' ,
-                  :max_item_weight  => "18" ,
+                  :max_item_weight  => "20" ,
                   :max_price        => "120" ,
                   :handling_max     => "20" ,
-                  :handling_fee     => "2" ,
+                  :handling_fee     => "0" ,
                   :default_weight   => "1" }
                   
     def initialize data
@@ -28,8 +28,7 @@ module OfficeClerk
 
     def price_for(basket)
       total_price = basket.total_price
-      return 0.0 if total_price > max_price
-
+      return 0.0 if total_price > self.max_price
       total_weight = basket.items.map {|item| item.quantity * (item.product.weight || default_weight) }.reduce(:+) || 0.0
       shipping =  0
 
@@ -70,6 +69,7 @@ module OfficeClerk
       raise "Could not parse weights #{@data[:weight_table]} for #{key}" if @weights.include?(nil) 
       raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.empty?
       raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.include?(nil)
+      raise "Price length #{@prices.length} and weight length #{@weights.length} differ" if @weights.length != @prices.length
     end
   end
 end
