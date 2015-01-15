@@ -8,8 +8,4 @@ group :red_green_refactor, halt_on_fail: true do
     watch(%r{^config/locales/.*yml})     { |m| "spec/i18n_spec.rb" }
   end
 
-  guard :rubocop, all_on_start: false, cli: ['--format', 'clang', '--rails'] do
-    watch(%r{.+\.rb$})
-    watch(%r{(?:.+/)?\.(rubocop|hound)\.yml$}) { |m| File.dirname(m[0]) }
-  end
 end
