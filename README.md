@@ -35,7 +35,7 @@ Add a config/locale/config.yml with the data for the calculator (s)
 
 With the default settings (measurements in kg and cm):
 
-- Max weight of one item: 18
+- Max weight of one item: 20
 - Default weight: 1kg (applies when product weight is 0)
 - Handling fee: 0
 - Amount, over which handling fee won't be applied: 50
@@ -44,7 +44,7 @@ With the default settings (measurements in kg and cm):
 - Prices (space separated):  2 5 10 15 18
 
 
-The Shipping method does not apply to the order if any items weighs more than 18 kg.
+The Shipping method does not apply to the order if any items weighs more than 20 kg.
 
 ## Cost examples
 
