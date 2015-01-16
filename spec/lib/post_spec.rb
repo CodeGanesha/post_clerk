@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe OfficeClerk::Post do
 
   describe 'using the default weight-price table: [1 2 5 10 20] => [2 5 10 15 18]' do
-    context '.price_for(basket)' do
+    context '.handling fee' do
       it 'gives handling fee plus min price with defaults and 0 items' do
         basket = create :basket
         result = price_for_basket(basket , :handling_fee => 10)
@@ -21,7 +21,8 @@ RSpec.describe OfficeClerk::Post do
         result = price_for_basket(basket )
         expect(result).to eq(2.0)
       end
-
+    end
+    context '.price_for(basket)' do
       it 'gives next price for 1.5 kg item => 5' do
         basket = basket_with({:weight =>  1.5}  )
         result = price_for_basket(basket)

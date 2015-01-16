@@ -65,10 +65,8 @@ module OfficeClerk
       @default_weight = @data[:default_weight].to_f || 1.0
     end
     def check_values!
-      raise "Could not parse weights #{@data[:weight_table]} for #{key}" if @weights.empty? 
-      raise "Could not parse weights #{@data[:weight_table]} for #{key}" if @weights.include?(nil) 
-      raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.empty?
-      raise "Could not parse prices #{@data[:price_table]} for #{key}" if @prices.include?(nil)
+      raise "Could not parse weights #{@weights}" if @weights.empty? or  @weights.include?(nil) 
+      raise "Could not parse prices #{@prices}" if @prices.empty? or @prices.include?(nil)
       raise "Price length #{@prices.length} and weight length #{@weights.length} differ" if @weights.length != @prices.length
     end
   end
