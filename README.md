@@ -39,7 +39,7 @@ With the default settings (measurements in kg and cm):
 - Default weight: 1kg (applies when product weight is 0)
 - Handling fee: 0
 - Amount, over which handling fee won't be applied: 50
-- Max total of the order: 120.0
+- Max total of the order: 100.0
 - Weights (space separated): 1 2 5 10 20
 - Prices (space separated):  2 5 10 15 18
 
@@ -48,11 +48,11 @@ The Shipping method does not apply to the order if any items weighs more than 20
 
 ## Cost examples
 
-- Items weighing 10 kg of worth 100 Euros will cost 15 Euros.
+- Items weighing 10 kg of worth 90 Euros will cost 15 Euros.
 - Items weighing 10 kg of worth 40 Euros will cost 25 Euros (15 + 10 handling).
 - Items weighing less than 1 kg of worth 60 Euros will cost 6 Euros.
 - Items weighing less than 1 kg of worth 40 Euros will cost 16 Euros (6 + 10).
-- Items weighing 25 kg of worth 200 Euros will cost 30 Euros (2 packages, 18 + 12 Euro).
+- Items weighing 25 kg of worth 90 Euros will cost 30 Euros (2 packages, 18 + 12 Euro).
 - 3 items without weight information of worth 100 euros will cost 12 Euro.
 - Any amount of items costing more than the max_price will cost 0 Euro.
 

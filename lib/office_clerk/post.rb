@@ -4,7 +4,7 @@ module OfficeClerk
     DEFAULTS ={   :weight_table     => '1 2 5 10 20' , 
                   :price_table      => '2 5 10 15 18' ,
                   :max_item_weight  => "20" ,
-                  :max_price        => "120" ,
+                  :max_price        => "100" ,
                   :handling_max     => "20" ,
                   :handling_fee     => "0" ,
                   :default_weight   => "1" }
@@ -59,7 +59,7 @@ module OfficeClerk
       @prices = @data[:price_table].split.map(&:to_f)
       @weights = @data[:weight_table].split.map(&:to_f)
       @max_item_weight = @data[:max_item_weight].to_f || 18.0
-      @max_price = @data[:max_price].to_f || 120.0
+      @max_price = @data[:max_price].to_f || 100.0
       @handling_max = @data[:handling_max].to_f || 20.0
       @handling_fee = @data[:handling_fee].to_f || 2.0
       @default_weight = @data[:default_weight].to_f || 1.0
