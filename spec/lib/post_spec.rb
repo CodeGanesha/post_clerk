@@ -22,6 +22,23 @@ RSpec.describe OfficeClerk::Post do
         expect(result).to eq(2.0)
       end
     end
+    context "free shipping " do
+      it "gives 0 for more than 100 cost, default setting " do
+        basket = basket_with({:weight =>  10.0} , { price: 110.0} )
+        result = price_for_basket(basket)
+        expect(result).to eq(0.0)
+      end
+      it "gives non 0 for less than 100 cost, default setting " do
+        basket = basket_with({:weight =>  10.0} , { price: 90.0} )
+        result = price_for_basket(basket)
+        expect(result).to eq(15.0)
+      end
+      it 'gives 0 when total price is more than the MAX, for one item (different max)' do
+        basket = basket_with({:weight =>  15.0} , {:price => 350} )
+        result = price_for_basket(basket , :max_price => 300.0)
+        expect(result).to eq(0.0)
+      end
+    end
     context '.price_for(basket)' do
       it 'gives next price for 1.5 kg item => 5' do
         basket = basket_with({:weight =>  1.5}  )
@@ -57,12 +74,6 @@ RSpec.describe OfficeClerk::Post do
         basket = basket_with({:weight =>  25.0} , {:price => 200.0} )
         result = price_for_basket(basket , :max_price => 250)
         expect(result).to eq(28.0)
-      end
-
-      it 'gives 0 when total price is more than the MAX, for one item' do
-        basket = basket_with({:weight =>  15.0} , {:price => 350} )
-        result = price_for_basket(basket , :max_price => 300.0)
-        expect(result).to eq(0.0)
       end
     end
   end
