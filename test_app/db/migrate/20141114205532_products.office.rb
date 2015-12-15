@@ -21,7 +21,7 @@ class Products < ActiveRecord::Migration
       t.references  :product,        index: true
       t.references  :category,       index: true
       t.references  :supplier,       index: true
-      t.timestamps
+      t.timestamps :null => false
     end
     add_index :products, :link
   end

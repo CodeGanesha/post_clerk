@@ -9,7 +9,7 @@ class Clerks < ActiveRecord::Migration
 
       #this is a json attribute, so anything can be added to the class easily
       t.string  :address
-      t.timestamps
+      t.timestamps :null => false
     end
     add_index :clerks, :email,                :unique => true
   end
