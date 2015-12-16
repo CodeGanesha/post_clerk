@@ -1,10 +1,10 @@
 # Add your own tasks in files placed in lib/tasks ending in .rake,
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
+Bundler::GemHelper.install_tasks
 
 require File.expand_path('../test_app/config/application', __FILE__)
 
 TestApp::Application.load_tasks
-require 'bundler/gem_tasks'
 
 desc 'Rebuild test and run specs'
 task :full_test do
