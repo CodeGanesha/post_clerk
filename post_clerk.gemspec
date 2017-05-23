@@ -5,10 +5,10 @@ $LOAD_PATH.unshift lib unless $LOAD_PATH.include?(lib)
 Gem::Specification.new do |s|
   s.platform     = Gem::Platform::RUBY
   s.name         = 'post_clerk'
-  s.version      = "0.6"
+  s.version      = "0.7"
   s.summary      = 'Calculate weight based charges for a OfficeClerk basket'
   s.description  = s.summary
-  s.required_ruby_version = '>= 1.9.3'
+  s.required_ruby_version = '>= 2.2'
 
   s.authors      = ['Torsten Rüger', 'Tobias Bohwalli']
   s.email        = ['torsten@villataika.fi', 'hi@futhr.io']
@@ -22,6 +22,6 @@ Gem::Specification.new do |s|
 
   s.has_rdoc = false
 
-  s.add_runtime_dependency 'office_clerk', '~> 1.0.0'
+  s.add_runtime_dependency 'office_clerk', '~> 1.1'
 
 end
