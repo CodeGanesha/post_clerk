@@ -12,9 +12,9 @@ config:
       name: Nouto lähimmästä pakettiautomaatista
       class: "OfficeClerk::Post"
       description: "you go and get"
-    pickup:
-      class: "OfficeClerk::Pickup"
-      name: Nouto myymälästämme
+    duda:
+      class: "OfficeClerk::Post"
+      name: duda
       description: "Within a week ..."
   defaults:
     tax: 24.0
