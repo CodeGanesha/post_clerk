@@ -1,14 +1,15 @@
+require "office_clerk/shipping_method"
 module OfficeClerk
   class Post < ShippingMethod
 
-    DEFAULTS ={   :weight_table     => '1 2 5 10 20' , 
+    DEFAULTS ={   :weight_table     => '1 2 5 10 20' ,
                   :price_table      => '2 5 10 15 18' ,
                   :max_item_weight  => "20" ,
                   :max_price        => "100" ,
                   :handling_max     => "20" ,
                   :handling_fee     => "0" ,
                   :default_weight   => "1" }
-                  
+
     def initialize data
       super DEFAULTS.merge(data)
       set_members
@@ -41,7 +42,7 @@ module OfficeClerk
     end
 
     private
-    
+
     def compute_index(total_weight)
       index = weights.length - 2
       while index >= 0
@@ -65,7 +66,7 @@ module OfficeClerk
       @default_weight = @data[:default_weight].to_f || 1.0
     end
     def check_values!
-      raise "Could not parse weights #{@weights}" if @weights.empty? or  @weights.include?(nil) 
+      raise "Could not parse weights #{@weights}" if @weights.empty? or  @weights.include?(nil)
       raise "Could not parse prices #{@prices}" if @prices.empty? or @prices.include?(nil)
       raise "Price length #{@prices.length} and weight length #{@weights.length} differ" if @weights.length != @prices.length
     end
